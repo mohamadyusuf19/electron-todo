@@ -29,12 +29,8 @@
   "scripts": {
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
-    "release": "electron-builder --windows",
-    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
-    "build": "react-scripts build",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+    "release": "react-scripts build && electron-builder --windows",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": [
@@ -56,7 +52,6 @@
   },
   "devDependencies": {
     "electron": "^13.2.1",
-    "electron-builder": "^22.13.1",
-    "electron-packager": "^15.5.1"
+    "electron-builder": "^22.13.1"
   }
 }
